@@ -15,6 +15,7 @@ namespace Modubs_APP
         public frm_setting()
         {
             InitializeComponent();
+           
         }
     }
 }
