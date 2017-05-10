@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Modubs_APP
 {
-    public partial class Form1 : Form
+    public partial class frm_setting : Form
     {
-        public Form1()
+        public frm_setting()
         {
             InitializeComponent();
         }
