@@ -13,14 +13,14 @@ namespace Modubs_APP
         /// <summary>
         /// 设置软件试用期限
         /// </summary>
-        /// <param name="form1">主窗口Name</param>
+        /// <param name="form">主窗口Name</param>
         /// <param name="maturityTime">试用时长单位为分钟</param>
         /// <returns></returns>
-        public string RunDatetime(Form form1,double maturityTime)
+        public string RunDatetime(Form form,double maturityTime)
         {
            try
            {
-                if (File.Exists(@"C:\Windows\System32\maturity.dll"))
+                if (File.Exists(@"C:\Windows\System32\maturity.dll"))//判断文件如果存在则读取文件
                 {
                     using (FileStream fileStream = new FileStream(@"C:\Windows\System32\maturity.dll", FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                     {
@@ -31,14 +31,13 @@ namespace Modubs_APP
                         if (DateTime.Now.CompareTo(maturityDate) >= 0)
                         {
                             MessageBox.Show("试用时间已到期,请联系开发者");
-                            form1.Close();
+                            form.Close();
                         }
                         return time;
                     }
                 }
-                else
+                else//如果不存在则创建文件
                 {
-
                     using (FileStream fileStream = new FileStream(@"C:\Windows\System32\maturity.dll", FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
 
                     {
@@ -55,7 +54,7 @@ namespace Modubs_APP
             catch(Exception ex)
            {
                MessageBox.Show(ex.ToString());
-                form1.Close();
+                form.Close();
                return string.Empty;
             }
         }

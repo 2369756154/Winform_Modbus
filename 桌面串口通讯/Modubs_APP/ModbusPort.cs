@@ -17,22 +17,9 @@ public int baudRate { get; set; }//波特率属性
 public Parity parity { get; set; }//奇偶校验属性
 public int dataBits { get; set; }//数据位属性
 public StopBits stopBits { get; set; }//停止位属性   
-*/
-        //单例模式，只有一个实例
+*/   
         private int readCommand_i;
         private static object obj = new object();//用于程序加锁
-        private static ModbusPort _modbusport;
-        public static ModbusPort Modbus
-        {
-            get
-            {
-                if (_modbusport == null)
-                {
-                    _modbusport = new ModbusPort();
-                }
-                    return _modbusport;
-            }
-        }
         #region Modbus Master(RTU)命令功能码
         private struct FunCode
         {
